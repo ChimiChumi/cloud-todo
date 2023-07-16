@@ -1,0 +1,15 @@
+.sidebar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 999;
+    background-color: transparent;
+    padding: 25px;
+  }
+
+  .sidebar-icons {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    margin-top: 10px;
+  }
