@@ -1,2 +1,14 @@
-<app-sidebar></app-sidebar>
+<div class="sidebar">
+    <fa-icon [icon]="barsIcon" (click)="toggleIcons()" class="fa-2x"></fa-icon>
+    <div *ngIf="showIcons" class="sidebar-icons">
+      <fa-icon [icon]="plusIcon" class="fa-2x" (click)="toggleAddTodo()"></fa-icon>
+      <fa-icon [icon]="signOutIcon" class="fa-2x"></fa-icon>
+    </div>
+</div>
 <app-add-todo></app-add-todo>
+
+<div *ngFor="let todo of todoArray" >
+  <p style="color: white;" > {{ todo.id }}</p>
+  <p style="color: white;" > {{ todo.todo }}</p>
+  <p style="color: white;" > {{ todo.date }}</p>
+</div>
