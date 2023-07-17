@@ -4,6 +4,7 @@
     font-family: Margarine;
 }
 
+/* ----- CONTAINER ----- */
 .container {
   display: flex;
   justify-content: center;
@@ -37,6 +38,7 @@ fa-icon {
     font-size: 25px;
 }
 
+/* ----- FORM FIELDS ----- */
 .form-control{
     position: relative;
     display: flex;
@@ -82,6 +84,10 @@ input[type="date"]{
     border-radius: 1rem;
 }
 
+textarea::placeholder{
+    font-size: 0.8rem;
+}
+
 .btn{
     position: relative;
     display: flex;
@@ -89,6 +95,19 @@ input[type="date"]{
     top: 4.5rem;
     background-color: #198754;
     border-color: black;
+    box-shadow: 0px 4px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.btn:active{
+    position: relative;
+    display: flex;
+    margin: 0 auto;
+    top: 4.5rem;
+    background-color: #198754;
+    border-color: black;
+    -webkit-transform: translateY(+1px);
+	transform: translateY(+1px);
+    box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.3);
 }
 
 .closed {
