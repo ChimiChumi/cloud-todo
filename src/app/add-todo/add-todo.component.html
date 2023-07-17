@@ -1,0 +1,19 @@
+<div class="container" [ngClass]="{'closed': isClosed}">
+    <span class="title">Create a TODO or Memory</span>
+    <form (ngSubmit)="submitForm(f)" #f="ngForm">
+        <div class="form-outline mb-4">
+            <textarea class="form-control" maxlength="200" [(ngModel)]="todo" name="todo"></textarea>
+        </div>
+
+        <span class="dateTitle">Select the due date</span>
+
+        <div class="form-outline">
+            <input type="date" [(ngModel)]="date" name="date">
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block mb-4">
+            Create
+        </button>
+    </form>
+    <fa-icon [icon]="closeIcon" (click)="closeContainer()"></fa-icon>
+</div>
