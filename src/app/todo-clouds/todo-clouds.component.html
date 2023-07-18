@@ -2,14 +2,14 @@
     <img class="background-image" src="../../assets/test.jpg" alt="Background Image">
     <div class="grid-container">
         <div class="grid-column">
-          <div *ngFor="let todo of todoArrayOdd" class="cloud">
+          <div *ngFor="let todo of todoArrayEven" class="cloud">
             <p style="color: black;" > {{ todo.id }}</p>
             <p style="color: black;" > {{ todo.todo }}</p>
             <p style="color: black;" > {{ todo.date }}</p>
           </div>
         </div>
         <div class="grid-column">
-          <div *ngFor="let todo of todoArrayEven" class="cloud">
+          <div *ngFor="let todo of todoArrayOdd" class="cloud">
             <p style="color: black;" > {{ todo.id }}</p>
             <p style="color: black;" > {{ todo.todo }}</p>
             <p style="color: black;" > {{ todo.date }}</p>

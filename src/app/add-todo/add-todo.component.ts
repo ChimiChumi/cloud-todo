@@ -41,28 +41,24 @@ export class AddTodoComponent implements OnInit, OnDestroy {
   }
 
   submitForm(todoForm: NgForm) {
+    // Save the form data to local storage
+    let todos = JSON.parse(localStorage.getItem('todos') || '[]');
+
     const todoData = {
-      id: this.generateUniqueId(),
+      id: todos.length,
       todo: this.todo,
       date: this.date
     };
 
-    // Save the form data to local storage
-    const todos = JSON.parse(localStorage.getItem('todos') || '[]');
     todos.push(todoData);
     localStorage.setItem('todos', JSON.stringify(todos));
 
-    console.log(todoData);
+    // reset and close window
     this.todo = "";
     this.date = "";
-
     this.closeContainer();
-    this.todoWindow.fetchTodos();
-  }
 
-  generateUniqueId(): number {
-    this.id++;
-    return this.id;
+    this.todoWindow.fetchTodos();
   }
 
   // manually creating a bullet list inside textarea
