@@ -8,7 +8,7 @@ import { faMinus } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './todo-clouds.component.html',
   styleUrls: ['./todo-clouds.component.css']
 })
-export class TodoCloudsComponent implements OnInit, AfterViewChecked {
+export class TodoCloudsComponent implements OnInit {
   minusIcon = faMinus;
   todoArray: Array<any> = [];
   todoArrayOdd: Array<any> = [];
@@ -25,8 +25,8 @@ export class TodoCloudsComponent implements OnInit, AfterViewChecked {
   @ViewChild('scrollContainer') private scrollContainer!: ElementRef;
   @ViewChild('gridContainer') private gridContainer!: ElementRef;
 
+
   ngOnInit() {
-    this.scrollToBottom();
 
     const firstTodo = {
       id: 1,
@@ -45,17 +45,22 @@ export class TodoCloudsComponent implements OnInit, AfterViewChecked {
 
     setTimeout(() => {
       this.scrollToBottom();
+      this.shiftGridToBottom();
     }, 0);
   }
 
-  ngAfterViewChecked(): void {
-    this.shiftGridToBottom();
-  }
-
   scrollToBottom(): void {
+
     try {
       this.scrollContainer.nativeElement.scrollTop = this.scrollContainer.nativeElement.scrollHeight;
+      this.gridContainer.nativeElement.scrollTop = this.gridContainer.nativeElement.scrollHeight;
     } catch (err) { }
+  }
+
+  removeCloud() {
+    console.log("Removed!");
+
+    //TODO: remove button
   }
 
   /**
