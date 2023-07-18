@@ -2,26 +2,26 @@
     <img class="background-image" src="../../assets/test.jpg" alt="Background Image">
   <div class="grid-container" #gridContainer>
     <div class="grid-column" #gridColumn>
-      <div *ngFor="let todo of testArray" class="cloud">
+      <div *ngFor="let todo of todoArrayEven" class="cloud">
         <div class="cloud-task">
           <span>{{ todo.todo }}</span>
         </div>
         <div class="cloud-date">
           <span>{{ todo.date }}</span>
         </div>
-        <fa-icon [icon]="minusIcon" (click)="removeCloud()" class="btn-remove"></fa-icon>
+        <fa-icon [icon]="minusIcon" (click)="removeCloud(todo)" class="btn-remove"></fa-icon>
       </div>
     </div>
     <div class="grid-column" #gridColumn>
       <div class="grid-spacing"></div>
-      <div *ngFor="let todo of testArray" class="cloud">
+      <div *ngFor="let todo of todoArrayOdd" class="cloud">
         <div class="cloud-task">
           <span>{{ todo.todo }}</span>
         </div>
         <div class="cloud-date">
           <span>{{ todo.date }}</span>
         </div>
-        <fa-icon [icon]="minusIcon" (click)="removeCloud()" class="btn-remove"></fa-icon>
+        <fa-icon [icon]="minusIcon" (click)="removeCloud(todo)" class="btn-remove"></fa-icon>
       </div>
     </div>
   </div>

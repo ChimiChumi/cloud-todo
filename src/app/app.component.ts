@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewChecked } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { faBars, faPlus, faSignOut } from '@fortawesome/free-solid-svg-icons';
 import { TodoWindowService } from './services/todo-window.service';
 
@@ -7,7 +7,7 @@ import { TodoWindowService } from './services/todo-window.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, AfterViewChecked {
+export class AppComponent implements OnInit {
   barsIcon = faBars;
   plusIcon = faPlus;
   signOutIcon = faSignOut;
@@ -15,12 +15,10 @@ export class AppComponent implements OnInit, AfterViewChecked {
 
   constructor(private todoWindow: TodoWindowService) { }
 
-  ngOnInit(): void {
-    this.todoWindow.fetchTodos();
-  }
-
-  ngAfterViewChecked(): void {
-    this.todoWindow.fetchTodos();
+  ngOnInit() {
+    // Fetch todos when the app starts
+    const initialTodos = this.todoWindow.fetchTodos();
+    this.todoWindow._todos.next(initialTodos);
   }
 
   toggleIcons() {

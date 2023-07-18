@@ -29,9 +29,6 @@ export class AddTodoComponent implements OnInit, OnDestroy {
     this.subscription = this.todoWindow.showAddTodo.subscribe((show: boolean) => {
       this.isClosed = !show;
     });
-
-    const todosString = localStorage.getItem('todos');
-    const todos = todosString ? JSON.parse(todosString) : [];
   }
 
   ngOnDestroy(): void {
@@ -41,8 +38,7 @@ export class AddTodoComponent implements OnInit, OnDestroy {
   }
 
   submitForm(todoForm: NgForm) {
-    // Save the form data to local storage
-    let todos = JSON.parse(localStorage.getItem('todos') || '[]');
+    let todos = this.todoWindow.fetchTodos();
 
     const todoData = {
       id: todos.length,
@@ -53,12 +49,13 @@ export class AddTodoComponent implements OnInit, OnDestroy {
     todos.push(todoData);
     localStorage.setItem('todos', JSON.stringify(todos));
 
+    // Notify the rest of the app that the todos have changed
+    this.todoWindow._todos.next(todos);
+
     // reset and close window
     this.todo = "";
     this.date = "";
     this.closeContainer();
-
-    this.todoWindow.fetchTodos();
   }
 
   // manually creating a bullet list inside textarea

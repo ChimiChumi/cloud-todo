@@ -1,16 +1,24 @@
 // TodoCloudsComponent.ts
 import { Component, OnInit, ElementRef, ViewChild, AfterViewChecked, HostListener } from '@angular/core';
+import { trigger, state, style, animate, transition, useAnimation } from '@angular/animations';
 import { TodoWindowService } from '../services/todo-window.service';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-todo-clouds',
   templateUrl: './todo-clouds.component.html',
-  styleUrls: ['./todo-clouds.component.css']
+  styleUrls: ['./todo-clouds.component.css'],
+  // TODO: have fun with animations
+  // animations: [
+  //   trigger('removeCloud', [
+  //     transition(':leave', [
+  //       animate('0.1s', style({ opacity: 0, transform: 'scale(0)' }))
+  //     ])
+  //   ])
+  // ]
 })
 export class TodoCloudsComponent implements OnInit {
   minusIcon = faMinus;
-  todoArray: Array<any> = [];
   todoArrayOdd: Array<any> = [];
   todoArrayEven: Array<any> = [];
   testArray: Array<any> = [];
@@ -30,37 +38,53 @@ export class TodoCloudsComponent implements OnInit {
 
     const firstTodo = {
       id: 1,
-      todo: `• TES TESTESTE STESTESTasdas \n    • ESTESTESTESTEST ESTESTESTTESTESTE STESTESTESTESTESTTESTESTESTESTESTESTESTESTTESTESTESTESTESTESTESTESTTESTESTESTESTESTESTESTEST`,
+      todo:
+        `Lorem ipsum dolor sit amet,
+         consectetur adipiscing elit,
+         sed do eiusmod tempor incididunt
+         ut labore et dolore magna aliqua.
+         Ut enim ad minim veniam, quis nostrud
+         exercitation ullamco laboris nisi ut
+         aliquip ex ea commodo consequat.`,
+
       date: '2023-07-18'
     };
 
     this.testArray = Array(21).fill(firstTodo);
 
-
     this.todoWindow.todos$.subscribe(todos => {
-      this.todoArray = todos;
       this.todoArrayOdd = todos.filter((todo: any) => todo.id % 2 !== 0);
       this.todoArrayEven = todos.filter((todo: any) => todo.id % 2 === 0);
-    });
 
-    setTimeout(() => {
-      this.scrollToBottom();
-      this.shiftGridToBottom();
-    }, 0);
+      // delaying to load only when previous elements are loaded in DOM
+      setTimeout(() => {
+        this.scrollToBottom();
+        this.shiftGridToBottom();
+      }, 0);
+    });
   }
 
   scrollToBottom(): void {
-
+    console.log("SCROLLED!");
     try {
       this.scrollContainer.nativeElement.scrollTop = this.scrollContainer.nativeElement.scrollHeight;
       this.gridContainer.nativeElement.scrollTop = this.gridContainer.nativeElement.scrollHeight;
     } catch (err) { }
   }
 
-  removeCloud() {
-    console.log("Removed!");
+  removeCloud(todo: any) {
+    // Get the current todos from local storage
+    let currentTodos = JSON.parse(localStorage.getItem('todos') || '[]');
 
-    //TODO: remove button
+    // Filter out the todo that matches the todo we want to remove
+    currentTodos = currentTodos.filter((t: any) => t.id !== todo.id);
+
+    // Save the updated todos back to local storage
+    localStorage.setItem('todos', JSON.stringify(currentTodos));
+
+    // Update the todoArray, todoArrayOdd, todoArrayEven arrays
+    this.todoArrayOdd = currentTodos.filter((t: any) => t.id % 2 !== 0);
+    this.todoArrayEven = currentTodos.filter((t: any) => t.id % 2 === 0);
   }
 
   /**
@@ -73,6 +97,7 @@ export class TodoCloudsComponent implements OnInit {
   }
 
   shiftGridToBottom() {
+    console.log("SHIFTED!");
     const scrollHeight = this.scrollContainer.nativeElement.scrollHeight;
     const gridHeight = this.gridContainer.nativeElement.offsetHeight;
     const offset = Math.max(scrollHeight - gridHeight, 0);

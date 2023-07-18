@@ -1,3 +1,4 @@
+import { getLocaleDateFormat } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -7,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 export class TodoWindowService {
 
   private _showAddTodo = new BehaviorSubject<boolean>(false);
-  private _todos = new BehaviorSubject<any[]>([]);
+  _todos = new BehaviorSubject<any[]>([]);
 
   showAddTodo = this._showAddTodo.asObservable();
   todos$ = this._todos.asObservable();
@@ -18,12 +19,10 @@ export class TodoWindowService {
    * This function retrieves the stored data from localstorage.
    * Other components can access the data with the help of this.
    */
-  fetchTodos() {
+  fetchTodos(): any[] {
+    console.log("FETCHED")
     const todosString = localStorage.getItem('todos');
-    if (todosString) {
-      const todos = JSON.parse(todosString);
-      this._todos.next(todos);
-    }
+    return todosString ? JSON.parse(todosString) : [];
   }
 
   /**
