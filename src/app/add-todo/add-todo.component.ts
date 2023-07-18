@@ -15,7 +15,7 @@ export class AddTodoComponent implements OnInit, OnDestroy {
   date: string;
   id: number;
   isClosed: boolean;
-  todoArray: Array<any> = [];
+
   private subscription: Subscription = new Subscription();
 
   constructor(private todoWindow: TodoWindowService) {
@@ -29,7 +29,9 @@ export class AddTodoComponent implements OnInit, OnDestroy {
     this.subscription = this.todoWindow.showAddTodo.subscribe((show: boolean) => {
       this.isClosed = !show;
     });
-    this.fetchTodos();
+
+    const todosString = localStorage.getItem('todos');
+    const todos = todosString ? JSON.parse(todosString) : [];
   }
 
   ngOnDestroy(): void {
@@ -54,22 +56,16 @@ export class AddTodoComponent implements OnInit, OnDestroy {
     this.todo = "";
     this.date = "";
 
-    this.todoWindow.fetchTodos();
     this.closeContainer();
-  }
-
-  fetchTodos() {
-    const todosString = localStorage.getItem('todos');
-    if (todosString) {
-      this.todoArray = JSON.parse(todosString);
-    }
+    this.todoWindow.fetchTodos();
   }
 
   generateUniqueId(): number {
-    this.id++; // Increment the id counter
+    this.id++;
     return this.id;
   }
 
+  // manually creating a bullet list inside textarea
   addBulletText(event: any) {
     var keycode = (event.keyCode ? event.keyCode : event.which);
     if (keycode == '13') {

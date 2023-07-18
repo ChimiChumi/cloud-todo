@@ -12,14 +12,11 @@ export class AppComponent implements OnInit {
   plusIcon = faPlus;
   signOutIcon = faSignOut;
   showIcons = false;
-  todoArray: any[] = [];
 
   constructor(private todoWindow: TodoWindowService) { }
 
   ngOnInit(): void {
-    this.todoWindow.todos$.subscribe(todos => {
-      this.todoArray = todos;
-    });
+    this.todoWindow.fetchTodos();
   }
 
   toggleIcons() {

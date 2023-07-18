@@ -14,6 +14,10 @@ export class TodoWindowService {
 
   constructor() { }
 
+  /**
+   * This function retrieves the stored data from localstorage.
+   * Other components can access the data with the help of this.
+   */
   fetchTodos() {
     const todosString = localStorage.getItem('todos');
     if (todosString) {
@@ -22,6 +26,10 @@ export class TodoWindowService {
     }
   }
 
+  /**
+   * After adding a new todo the window should disappear and register as closed
+   * @param visible - window visibility
+   */
   toggleAddTodoVisibility(visible?: boolean) {
     if (visible !== undefined) {
       this._showAddTodo.next(visible);
