@@ -6,11 +6,13 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddTodoComponent } from './add-todo/add-todo.component';
+import { TodoCloudsComponent } from './todo-clouds/todo-clouds.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddTodoComponent
+    AddTodoComponent,
+    TodoCloudsComponent
   ],
   imports: [
     BrowserModule,
