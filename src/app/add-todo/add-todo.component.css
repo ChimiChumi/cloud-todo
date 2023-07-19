@@ -59,6 +59,7 @@ textarea{
     font-size: 1rem;
     font-style: normal;
     font-weight: 400;
+    word-break: break-all;
 }
 
 .dateTitle {
