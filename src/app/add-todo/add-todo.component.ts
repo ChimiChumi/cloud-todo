@@ -37,41 +37,36 @@ export class AddTodoComponent implements OnInit, OnDestroy {
     }
   }
 
-  submitForm(todoForm: NgForm) {
-    let todos = this.todoWindow.fetchTodos();
+  submitForm(todoForm: NgForm): void {
+    const todos = this.todoWindow.fetchTodos();
 
     const todoData = {
-      id: todos.length,
+      id: todos.length + 1,  // index starting from 1
       todo: this.todo,
       date: this.date
     };
 
-    todos.push(todoData);
-    localStorage.setItem('todos', JSON.stringify(todos));
+    console.log("Todo added!\n" + "ID: " + todoData.id + " task: " + todoData.todo );
+    this.todoWindow.addTodo(todoData);
 
-    // Notify the rest of the app that the todos have changed
-    this.todoWindow._todos.next(todos);
-
-    // reset and close window
-    this.todo = "";
-    this.date = "";
+    // Reset and close window
+    this.todo = '';
+    this.date = '';
     this.closeContainer();
   }
 
   // manually creating a bullet list inside textarea
   addBulletText(event: any) {
-    var keycode = (event.keyCode ? event.keyCode : event.which);
-    if (keycode == '13') {
-      this.todo += '• '
-    }
-
-    if (this.todo.substr(this.todo.length - 1) == '\n') {
-      this.todo = this.todo.substring(0, this.todo.length - 1);
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      this.todo += '\n• ';
     }
   }
 
   mytextOnFocus() {
-    this.todo += '• ';
+    if (!this.todo) {
+      this.todo = '• ';
+    }
   }
 
   closeContainer() {
