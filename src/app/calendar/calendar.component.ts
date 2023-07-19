@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, AfterViewInit, ElementRef } from '@angula
 import { DateAdapter } from '@angular/material/core';
 import { TodoWindowService } from '../services/todo-window.service';
 import { Subscription } from 'rxjs';
+import { NewLinePipe } from '../pipes/new-line.pipe';
 
 
 @Component({

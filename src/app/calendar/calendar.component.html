@@ -1,3 +1,5 @@
+<div class="container">
+  <div class="weather-card"></div>
 <mat-card class="calendar-card">
   <mat-calendar
     [(selected)]="selected"
@@ -10,5 +12,6 @@
 
 <mat-card class="daily-card">
   <span class="daily-title">{{ isToday(selected) ? 'Happening Today' : 'Tasks on selected day' }}</span>
-  <span>{{ dailyTasks(selected) }}</span>
+  <span [innerHTML]="dailyTasks(selected) | newLine"></span>
 </mat-card>
+</div>

@@ -14,6 +14,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule, DateAdapter } from '@angular/material/core';
 import { CustomDateAdapter } from './calendar/custom-date-adapter';
+import { NewLinePipe } from './pipes/new-line.pipe';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { CustomDateAdapter } from './calendar/custom-date-adapter';
     AppComponent,
     AddTodoComponent,
     ListTodoComponent,
-    CalendarComponent
+    CalendarComponent,
+    NewLinePipe
   ],
   imports: [
     BrowserModule,

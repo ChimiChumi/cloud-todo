@@ -4,7 +4,7 @@
     <div class="grid-column" #gridColumn>
       <div *ngFor="let todo of todoArrayLeft" class="cloud">
         <div class="cloud-task">
-          <span>{{ todo.todo }}</span>
+          <div [innerHTML]="todo.todo | newLine"></div>
         </div>
         <div class="cloud-date">
           <span>{{ todo.date }}</span>
@@ -16,7 +16,7 @@
       <div class="grid-spacing"></div>
       <div *ngFor="let todo of todoArrayRight" class="cloud">
         <div class="cloud-task">
-          <span>{{ todo.todo }}</span>
+          <div [innerHTML]="todo.todo | newLine"></div>
         </div>
         <div class="cloud-date">
           <span>{{ todo.date }}</span>
