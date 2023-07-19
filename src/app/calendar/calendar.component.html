@@ -1,13 +1,14 @@
 <mat-card class="calendar-card">
-    <mat-calendar
+  <mat-calendar
     [(selected)]="selected"
-    (click)="dailyTasks()"
-    ></mat-calendar>
+    (click)="dailyTasks(selected)"
+    #calendar
+  ></mat-calendar>
 </mat-card>
+
 <br>
+
 <mat-card class="daily-card">
-  <span class="daily-title">{{ isToday() ? 'Happening Today' : 'Tasks on selected day'  }}</span>
-
-  <span> {{ dailyTasks() }} </span>
+  <span class="daily-title">{{ isToday(selected) ? 'Happening Today' : 'Tasks on selected day' }}</span>
+  <span>{{ dailyTasks(selected) }}</span>
 </mat-card>
-
