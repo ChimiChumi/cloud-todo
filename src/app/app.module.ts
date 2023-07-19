@@ -8,8 +8,13 @@ import { AppComponent } from './app.component';
 import { AddTodoComponent } from './add-todo/add-todo.component';
 import { TodoCloudsComponent } from './todo-clouds/todo-clouds.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DailyTodosComponent } from './daily-todos/daily-todos.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatCardModule } from '@angular/material/card';
+import { MatNativeDateModule, DateAdapter } from '@angular/material/core';
+import { CustomDateAdapter } from './calendar/custom-date-adapter';
+
+
 
 
 @NgModule({
@@ -17,7 +22,6 @@ import { CalendarComponent } from './calendar/calendar.component';
     AppComponent,
     AddTodoComponent,
     TodoCloudsComponent,
-    DailyTodosComponent,
     CalendarComponent
   ],
   imports: [
@@ -25,9 +29,14 @@ import { CalendarComponent } from './calendar/calendar.component';
     AppRoutingModule,
     FontAwesomeModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatCardModule,
+    MatNativeDateModule
   ],
-  providers: [],
+  providers: [
+    { provide: DateAdapter, useClass: CustomDateAdapter },
+],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

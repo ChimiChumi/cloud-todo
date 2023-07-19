@@ -1,0 +1,20 @@
+.calendar-card {
+    left: 2rem;
+    top: 5rem;
+    width: 20rem;
+    border-radius: 2rem;
+    box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.25) inset;
+    z-index: 0;
+}
+
+.daily-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20rem;
+    height: 10rem;
+    left: 2rem;
+    top: 5rem;
+    border-radius: 2rem;
+    box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.25) inset;
+}
