@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable({
   providedIn: 'root'
@@ -38,10 +39,11 @@ export class TodoWindowService {
 
   addTodo(todo: any): void {
     const todos = this.fetchTodos();
+    todo.id = uuidv4(); // using uuid as id
     todos.push(todo);
     localStorage.setItem('todos', JSON.stringify(todos));
     this.updateTodos(todos);
-  }
+}
 
   removeTodo(todo: any): void {
     let todos = this.fetchTodos();

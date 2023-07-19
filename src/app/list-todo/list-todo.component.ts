@@ -19,8 +19,8 @@ import { faMinus } from '@fortawesome/free-solid-svg-icons';
 })
 export class ListTodoComponent implements OnInit {
   minusIcon = faMinus;
-  todoArrayOdd: Array<any> = [];
-  todoArrayEven: Array<any> = [];
+  todoArrayLeft: Array<any> = [];
+  todoArrayRight: Array<any> = [];
   //testArray: Array<any> = [];
 
   constructor(
@@ -52,8 +52,8 @@ export class ListTodoComponent implements OnInit {
     // this.testArray = Array(21).fill(firstTodo);
 
     this.todoWindow.todos$.subscribe(todos => {
-      this.todoArrayOdd = todos.filter((todo: any) => todo.id % 2 !== 0);
-      this.todoArrayEven = todos.filter((todo: any) => todo.id % 2 === 0);
+      this.todoArrayLeft = todos.filter((todo: any, index: number) => index % 2 === 0);
+      this.todoArrayRight = todos.filter((todo: any, index: number) => index % 2 !== 0);
 
       // delaying to load only when previous elements are loaded in DOM
       setTimeout(() => {
@@ -64,7 +64,6 @@ export class ListTodoComponent implements OnInit {
   }
 
   scrollToBottom(): void {
-    console.log("SCROLLED!");
     try {
       this.scrollContainer.nativeElement.scrollTop = this.scrollContainer.nativeElement.scrollHeight;
       this.gridContainer.nativeElement.scrollTop = this.gridContainer.nativeElement.scrollHeight;
@@ -86,7 +85,7 @@ export class ListTodoComponent implements OnInit {
   }
 
   shiftGridToBottom() {
-    console.log("SHIFTED!");
+
     const scrollHeight = this.scrollContainer.nativeElement.scrollHeight;
     const gridHeight = this.gridContainer.nativeElement.offsetHeight;
     const offset = Math.max(scrollHeight - gridHeight, 0);
