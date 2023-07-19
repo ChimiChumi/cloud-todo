@@ -1,5 +1,5 @@
 // TodoCloudsComponent.ts
-import { Component, OnInit, ElementRef, ViewChild, AfterViewChecked, HostListener } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, HostListener } from '@angular/core';
 import { trigger, state, style, animate, transition, useAnimation } from '@angular/animations';
 import { TodoWindowService } from '../services/todo-window.service';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
@@ -24,7 +24,6 @@ export class TodoCloudsComponent implements OnInit {
   testArray: Array<any> = [];
 
   constructor(
-    private elementRef: ElementRef,
     private todoWindow: TodoWindowService
   ) {
 
@@ -73,16 +72,18 @@ export class TodoCloudsComponent implements OnInit {
   }
 
   removeCloud(todo: any) {
+    //FIXME: multiple instances getting deleted. The cloud with the a actual ID should be deleted.
+
     // Get the current todos from local storage
     let currentTodos = JSON.parse(localStorage.getItem('todos') || '[]');
 
-    // Filter out the todo that matches the todo we want to remove
+    // filter out the todo that matches the todo we want to remove
     currentTodos = currentTodos.filter((t: any) => t.id !== todo.id);
 
-    // Save the updated todos back to local storage
+    // save the updated changes
     localStorage.setItem('todos', JSON.stringify(currentTodos));
 
-    // Update the todoArray, todoArrayOdd, todoArrayEven arrays
+    // update
     this.todoArrayOdd = currentTodos.filter((t: any) => t.id % 2 !== 0);
     this.todoArrayEven = currentTodos.filter((t: any) => t.id % 2 === 0);
   }
