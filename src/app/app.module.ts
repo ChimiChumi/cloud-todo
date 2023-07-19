@@ -6,9 +6,10 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddTodoComponent } from './add-todo/add-todo.component';
-import { TodoCloudsComponent } from './todo-clouds/todo-clouds.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ListTodoComponent } from './todo-clouds/list-todo.component';
 import { CalendarComponent } from './calendar/calendar.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule, DateAdapter } from '@angular/material/core';
@@ -19,7 +20,7 @@ import { CustomDateAdapter } from './calendar/custom-date-adapter';
   declarations: [
     AppComponent,
     AddTodoComponent,
-    TodoCloudsComponent,
+    ListTodoComponent,
     CalendarComponent
   ],
   imports: [
