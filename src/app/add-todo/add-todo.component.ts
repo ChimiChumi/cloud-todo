@@ -46,7 +46,7 @@ export class AddTodoComponent implements OnInit, OnDestroy {
       date: this.date
     };
 
-    console.log("Todo added!\n" + "ID: " + todoData.id + " task: " + todoData.todo );
+
     this.todoWindow.addTodo(todoData);
 
     // Reset and close window
