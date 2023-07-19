@@ -21,7 +21,7 @@ export class TodoCloudsComponent implements OnInit {
   minusIcon = faMinus;
   todoArrayOdd: Array<any> = [];
   todoArrayEven: Array<any> = [];
-  testArray: Array<any> = [];
+  //testArray: Array<any> = [];
 
   constructor(
     private todoWindow: TodoWindowService
@@ -35,21 +35,21 @@ export class TodoCloudsComponent implements OnInit {
 
   ngOnInit() {
 
-    const firstTodo = {
-      id: 1,
-      todo:
-        `Lorem ipsum dolor sit amet,
-         consectetur adipiscing elit,
-         sed do eiusmod tempor incididunt
-         ut labore et dolore magna aliqua.
-         Ut enim ad minim veniam, quis nostrud
-         exercitation ullamco laboris nisi ut
-         aliquip ex ea commodo consequat.`,
+    // const firstTodo = {
+    //   id: 1,
+    //   todo:
+    //     `Lorem ipsum dolor sit amet,
+    //      consectetur adipiscing elit,
+    //      sed do eiusmod tempor incididunt
+    //      ut labore et dolore magna aliqua.
+    //      Ut enim ad minim veniam, quis nostrud
+    //      exercitation ullamco laboris nisi ut
+    //      aliquip ex ea commodo consequat.`,
 
-      date: '2023-07-18'
-    };
+    //   date: '2023-07-18'
+    // };
 
-    this.testArray = Array(21).fill(firstTodo);
+    // this.testArray = Array(21).fill(firstTodo);
 
     this.todoWindow.todos$.subscribe(todos => {
       this.todoArrayOdd = todos.filter((todo: any) => todo.id % 2 !== 0);
@@ -71,22 +71,10 @@ export class TodoCloudsComponent implements OnInit {
     } catch (err) { }
   }
 
-  removeCloud(todo: any) {
-    //FIXME: multiple instances getting deleted. The cloud with the a actual ID should be deleted.
+  removeCloud(todo: any): void {
+  this.todoWindow.removeTodo(todo);
+}
 
-    // Get the current todos from local storage
-    let currentTodos = JSON.parse(localStorage.getItem('todos') || '[]');
-
-    // filter out the todo that matches the todo we want to remove
-    currentTodos = currentTodos.filter((t: any) => t.id !== todo.id);
-
-    // save the updated changes
-    localStorage.setItem('todos', JSON.stringify(currentTodos));
-
-    // update
-    this.todoArrayOdd = currentTodos.filter((t: any) => t.id % 2 !== 0);
-    this.todoArrayEven = currentTodos.filter((t: any) => t.id % 2 === 0);
-  }
 
   /**
    * The function serves as workaround to shift the entire .grid-container

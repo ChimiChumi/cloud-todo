@@ -1,4 +1,3 @@
-import { getLocaleDateFormat } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -35,5 +34,23 @@ export class TodoWindowService {
     } else {
       this._showAddTodo.next(!this._showAddTodo.value);
     }
+  }
+
+  addTodo(todo: any): void {
+    const todos = this.fetchTodos();
+    todos.push(todo);
+    localStorage.setItem('todos', JSON.stringify(todos));
+    this.updateTodos(todos);
+  }
+
+  removeTodo(todo: any): void {
+    let todos = this.fetchTodos();
+    todos = todos.filter((t: any) => t.id !== todo.id);
+    localStorage.setItem('todos', JSON.stringify(todos));
+    this.updateTodos(todos);
+  }
+
+  private updateTodos(todos: any[]): void {
+    this._todos.next(todos);
   }
 }

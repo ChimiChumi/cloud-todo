@@ -8,8 +8,8 @@
             [(ngModel)]="todo"
             name="todo"
             placeholder="Record a memory or an upcoming task ..."
-            (focus)="mytextOnFocus()"
-            (keyup)="addBulletText($event)"></textarea>
+            (keydown)="addBulletText($event)"
+            (focus)="mytextOnFocus()"></textarea>
         </div>
 
         <span class="dateTitle">Select the due date (optional)</span>
