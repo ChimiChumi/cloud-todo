@@ -7,18 +7,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddTodoComponent } from './add-todo/add-todo.component';
 import { TodoCloudsComponent } from './todo-clouds/todo-clouds.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DailyTodosComponent } from './daily-todos/daily-todos.component';
+import { CalendarComponent } from './calendar/calendar.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     AddTodoComponent,
-    TodoCloudsComponent
+    TodoCloudsComponent,
+    DailyTodosComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
