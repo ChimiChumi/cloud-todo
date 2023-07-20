@@ -11,9 +11,9 @@
   position: absolute;
   width: 100%;
   height: 5000px;
-  background-image: url("../../assets/test.jpg");
+  background-image: url("../../assets/art.jpg");
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: contain;
   background-position: center;
   z-index: -1;
 }
@@ -28,6 +28,7 @@
   width: auto;
   overflow: scroll;
   align-items: end;
+  left: 10rem;
 }
 
 .grid-spacing {
