@@ -96,7 +96,13 @@ $default-color: #06283D;
   }
 }
 
-.humidityText, .windText {
+.humidityText {
+  text-align: center;
+  font-size: 1rem;
+  padding-left: 0.5rem;
+}
+
+.windText {
   text-align: center;
   font-size: 1rem;
   padding-left: 1rem;

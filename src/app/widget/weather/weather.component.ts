@@ -52,14 +52,18 @@ export class WeatherComponent {
     switch (main) {
       case 'Clear':
         return '../../assets/images/clear.png';
-      case 'Rain':
-        return '../../assets/images/rain.png';
-      case 'Snow':
-        return '../../assets/images/snow.png';
       case 'Clouds':
         return '../../assets/images/cloudy.png';
-      case 'Haze':
-        return '../../assets/images/mist.png';
+      case 'Thunderstorm':
+        return '../../assets/images/thunderstorm.png';
+      case 'Rain':
+        return '../../assets/images/rain.png';
+      case 'Drizzle':
+        return '../../assets/images/rain.png';
+      case 'Fog':
+        return '../../assets/images/fog.png';
+      case 'Snow':
+        return '../../assets/images/snow.png';
       default:
         return '';
     }
