@@ -109,10 +109,12 @@ export class CalendarComponent implements OnInit, OnDestroy, AfterViewInit {
 
   /**
    * Workaround to highlight the cells which are not on the current calendar page.
+   * highlightCalendarCells is called whenever the user clicks on the arrows or the year select buttons.
    */
   addNavigationListeners(): void {
     const prevButtons = this.elementRef.nativeElement.querySelectorAll('.mat-calendar-previous-button');
     const nextButtons = this.elementRef.nativeElement.querySelectorAll('.mat-calendar-next-button');
+    const yearButton = this.elementRef.nativeElement.querySelectorAll('.mat-calendar-period-button');
 
     prevButtons.forEach((button: { addEventListener: (arg0: string, arg1: () => void) => void; }) => {
       button.addEventListener('click', () => {
@@ -121,6 +123,12 @@ export class CalendarComponent implements OnInit, OnDestroy, AfterViewInit {
     });
 
     nextButtons.forEach((button: { addEventListener: (arg0: string, arg1: () => void) => void; }) => {
+      button.addEventListener('click', () => {
+        setTimeout(() => this.highlightCalendarCells(), 0);
+      });
+    });
+
+    yearButton.forEach((button: { addEventListener: (arg0: string, arg1: () => void) => void; }) => {
       button.addEventListener('click', () => {
         setTimeout(() => this.highlightCalendarCells(), 0);
       });

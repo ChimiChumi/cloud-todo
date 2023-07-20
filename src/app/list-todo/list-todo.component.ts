@@ -23,11 +23,7 @@ export class ListTodoComponent implements OnInit {
   todoArrayRight: Array<any> = [];
   //testArray: Array<any> = [];
 
-  constructor(
-    private todoWindow: TodoWindowService
-  ) {
-
-  }
+  constructor(private todoWindow: TodoWindowService) {}
 
   @ViewChild('scrollContainer') private scrollContainer!: ElementRef;
   @ViewChild('gridContainer') private gridContainer!: ElementRef;
@@ -57,7 +53,7 @@ export class ListTodoComponent implements OnInit {
 
       // delaying to load only when previous elements are loaded in DOM
       setTimeout(() => {
-        this.scrollToBottom();
+        // this.scrollToBottom();
         this.shiftGridToBottom();
       }, 0);
     });
@@ -71,7 +67,7 @@ export class ListTodoComponent implements OnInit {
   }
 
   removeCloud(todo: any): void {
-  this.todoWindow.removeTodo(todo);
+    this.todoWindow.removeTodo(todo);
 }
 
 
