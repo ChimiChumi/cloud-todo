@@ -1,0 +1,15 @@
+<!-- calendar.component.html -->
+<mat-card class="calendar-card">
+    <mat-calendar
+      [(selected)]="selected"
+      (click)="dailyTasks(selected)"
+      #calendar
+    ></mat-calendar>
+  </mat-card>
+
+  <br>
+
+<mat-card class="daily-card">
+  <span class="daily-title">{{ isToday(selected) ? 'Happening Today' : 'Tasks on selected day' }}</span>
+  <span [innerHTML]="dailyTasks(selected) | newLine"></span>
+</mat-card>

@@ -7,14 +7,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddTodoComponent } from './add-todo/add-todo.component';
 import { ListTodoComponent } from './list-todo/list-todo.component';
-import { CalendarComponent } from './calendar/calendar.component';
+import { WidgetComponent } from './widget/widget.component';
+import { WeatherComponent } from './widget/weather/weather.component';
+import { CalendarComponent } from './widget/calendar/calendar.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule, DateAdapter } from '@angular/material/core';
-import { CustomDateAdapter } from './calendar/custom-date-adapter';
+import { CustomDateAdapter } from './widget/calendar/custom-date-adapter';
 import { NewLinePipe } from './pipes/new-line.pipe';
+
 
 
 @NgModule({
@@ -22,8 +25,10 @@ import { NewLinePipe } from './pipes/new-line.pipe';
     AppComponent,
     AddTodoComponent,
     ListTodoComponent,
+    NewLinePipe,
+    WidgetComponent,
     CalendarComponent,
-    NewLinePipe
+    WeatherComponent
   ],
   imports: [
     BrowserModule,

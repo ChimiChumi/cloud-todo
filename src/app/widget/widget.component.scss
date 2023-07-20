@@ -1,0 +1,13 @@
+/* widget.component.scss */
+.container {
+    display: flex;
+    position: absolute;
+    height: 100%;
+    margin-bottom: 0;
+    margin-left: 2rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+    width: fit-content;
+  }
