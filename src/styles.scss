@@ -23,5 +23,21 @@ body {
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px);
-  z-index: -1; /* To ensure it is on top of other content */
+  z-index: 2; /* To ensure it is on top of other content */
+}
+
+::-webkit-scrollbar,
+::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-button {
+  background-color: transparent;
+  visibility: hidden;
+  width: 0;
+  display: none;
 }

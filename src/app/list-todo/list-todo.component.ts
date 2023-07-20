@@ -1,6 +1,5 @@
 // TodoCloudsComponent.ts
 import { Component, OnInit, ElementRef, ViewChild, HostListener } from '@angular/core';
-import { trigger, state, style, animate, transition, useAnimation } from '@angular/animations';
 import { TodoWindowService } from '../services/todo-window.service';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
 
@@ -8,22 +7,14 @@ import { faMinus } from '@fortawesome/free-solid-svg-icons';
   selector: 'app-list-todo',
   templateUrl: './list-todo.component.html',
   styleUrls: ['./list-todo.component.scss'],
-  // TODO: have fun with animations
-  // animations: [
-  //   trigger('removeCloud', [
-  //     transition(':leave', [
-  //       animate('0.1s', style({ opacity: 0, transform: 'scale(0)' }))
-  //     ])
-  //   ])
-  // ]
 })
 export class ListTodoComponent implements OnInit {
   minusIcon = faMinus;
   todoArrayLeft: Array<any> = [];
   todoArrayRight: Array<any> = [];
-  //testArray: Array<any> = [];
+  // testArray: Array<any> = [];
 
-  constructor(private todoWindow: TodoWindowService) {}
+  constructor(private todoWindow: TodoWindowService) { }
 
   @ViewChild('scrollContainer') private scrollContainer!: ElementRef;
   @ViewChild('gridContainer') private gridContainer!: ElementRef;
@@ -34,13 +25,13 @@ export class ListTodoComponent implements OnInit {
     // const firstTodo = {
     //   id: 1,
     //   todo:
-    //     `Lorem ipsum dolor sit amet,
-    //      consectetur adipiscing elit,
-    //      sed do eiusmod tempor incididunt
-    //      ut labore et dolore magna aliqua.
-    //      Ut enim ad minim veniam, quis nostrud
-    //      exercitation ullamco laboris nisi ut
-    //      aliquip ex ea commodo consequat.`,
+    //     `• Lorem ipsum dolor sit amet.\n
+    //      • consectetur adipiscing elit,
+    //        sed do eiusmod tempor incididunt
+    //        ut labore et dolore magna.\n
+    //      • Ut enim ad minim veniam, quis nostrud
+    //        exercitation ullamco laboris nisi\n
+    //      • aliquip ex ea commodo consequat.`,
 
     //   date: '2023-07-18'
     // };
@@ -53,7 +44,7 @@ export class ListTodoComponent implements OnInit {
 
       // delaying to load only when previous elements are loaded in DOM
       setTimeout(() => {
-        // this.scrollToBottom();
+        this.scrollToBottom();
         this.shiftGridToBottom();
       }, 0);
     });
@@ -68,7 +59,7 @@ export class ListTodoComponent implements OnInit {
 
   removeCloud(todo: any): void {
     this.todoWindow.removeTodo(todo);
-}
+  }
 
 
   /**

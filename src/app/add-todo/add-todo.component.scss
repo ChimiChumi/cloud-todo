@@ -1,17 +1,23 @@
-$container-size: 30rem;
-$container-bg-color: #FFDFD8;
-$font-size-default: 1rem;
-$font-weight-default: 400;
-$font-style-default: normal;
-$button-bg-color: #198754;
-$button-shadow: 0px 4px 0px 0px rgba(0, 0, 0, 1);
-
 @import url('https://fonts.cdnfonts.com/css/margarine');
 
+// Variables
+$primary-color: #7749F8;
+$default-white: #FFF;
+$box-shadow-color: rgba(0, 0, 0, 0.45);
+$button-shadow-color: rgba(0, 0, 0, 0.3);
+$button-bg-color: #198754;
+$button-border-color: black;
+$container-width: 30rem;
+$container-height: 32rem;
+$form-control-width: 20rem;
+$form-control-height: 14rem;
+$form-control-border-color: var(--primary-color, #7749F8);
+
 * {
-    font-family: Margarine;
+  font-family: Margarine;
 }
 
+// ----- CONTAINER -----
 .container {
   display: flex;
   justify-content: center;
@@ -20,96 +26,104 @@ $button-shadow: 0px 4px 0px 0px rgba(0, 0, 0, 1);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: $container-size;
-  height: 32rem;
-  background-color: $container-bg-color;
+  width: $container-width;
+  height: $container-height;
+  background-color: #f2f2f2;
   border-radius: 1.5rem;
-  box-shadow: 0px 14px 8px 4px rgba(0, 0, 0, 0.45);
+  background: #FFDFD8;
+  box-shadow: 0px 14px 8px 4px $box-shadow-color;
+  z-index: 10;
 }
 
-.title{
-    position: absolute;
-    top: 4.2rem;
-    font-size: 2rem;
-    font-style: $font-style-default;
-    font-weight: $font-weight-default;
-    line-height: 1.25rem;
+.title {
+  position: absolute;
+  top: 4.2rem;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25rem;
 }
 
 fa-icon {
-    position: absolute;
-    top: 25px;
-    right: 25px;
-    cursor: pointer;
-    font-size: 25px;
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  cursor: pointer;
+  font-size: 25px;
 }
 
-.form-control{
-    position: relative;
-    display: flex;
-    top: 2rem;
-    width: 20rem;
-    height: 14rem;
-    padding: 1rem;
-    flex-shrink: 0;
-    border-radius: 1.25rem;
-    border: 1px solid var(--primary-color, #7749F8);
-    background: var(--default-white, #FFF);
-    box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.25) inset;
-    resize: none;
+// ----- FORM FIELDS -----
+.form-control {
+  position: relative;
+  display: flex;
+  top: 2rem;
+  width: $form-control-width;
+  height: $form-control-height;
+  padding: 1rem;
+  border-radius: 1.25rem;
+  border: 1px solid $form-control-border-color;
+  background: var(--default-white, #FFF);
+  box-shadow: 0px 4px 4px 3px $box-shadow-color inset;
+  resize: none;
+}
 
-    textarea{
-        position: relative;
-        font-size: $font-size-default;
-        font-style: $font-style-default;
-        font-weight: $font-weight-default;
-        word-break: break-all;
+textarea {
+  position: relative;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  word-break: break-all;
 
-        &::placeholder {
-            font-size: 0.8rem;
-        }
-    }
+  &::placeholder{
+    font-size: 0.9rem;
+  }
 }
 
 .dateTitle {
-    position: absolute;
-    display: flex;
-    left: 50%;
-    margin-top: 1rem;
-    transform: translate(-50%);
+  position: absolute;
+  display: flex;
+  left: 50%;
+  margin-top: 1rem;
+  transform: translate(-50%);
 }
 
-input[type="date"]{
-    position: relative;
-    display: flex;
-    margin: 1rem auto;
-    padding: 0.5rem;
-    background-color: white;
-    top: 3rem;
-    font-size: $font-size-default;
-    font-style: $font-style-default;
-    font-weight: $font-weight-default;
-    border: none;
-    outline: none;
-    border-radius: 1rem;
+input[type="date"] {
+  position: relative;
+  display: flex;
+  margin: 1rem auto;
+  padding: 0.5rem;
+  background-color: white;
+  top: 3rem;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  border: none;
+  outline: none;
+  border-radius: 1rem;
 }
 
-.btn{
+.btn {
+  position: relative;
+  display: flex;
+  margin: 0 auto;
+  top: 4.5rem;
+  background-color: $button-bg-color;
+  border-color: $button-border-color;
+  box-shadow: 0px 4px 0px 0px black;
+
+  &:active {
     position: relative;
     display: flex;
     margin: 0 auto;
     top: 4.5rem;
     background-color: $button-bg-color;
-    border-color: black;
-    box-shadow: $button-shadow;
-
-    &:active {
-        -webkit-transform: translateY(+1px);
-        transform: translateY(+1px);
-        box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.3);
-    }
+    border-color: $button-border-color;
+    -webkit-transform: translateY(+1px);
+    transform: translateY(+1px);
+    box-shadow: 0px 1px 0px 0px $button-shadow-color;
+  }
 }
 
 .closed {
-    display: none;
+  display: none;
 }

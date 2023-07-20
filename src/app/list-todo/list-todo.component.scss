@@ -36,7 +36,7 @@ $btn-transition: 0.1s ease-in-out;
   overflow: scroll;
   align-items: end;
   left: 10rem;
-  z-index: -1;
+  z-index: 1;
 }
 
 .grid-spacing {
@@ -74,7 +74,7 @@ $btn-transition: 0.1s ease-in-out;
     height: 55%;
     font-size: 1rem;
     text-align: center;
-    word-break: break-all;
+    word-wrap: break-word;
     overflow-y: scroll;
     padding: 0.1rem 0.5rem;
     margin-bottom: 0.1rem;
@@ -112,20 +112,4 @@ $btn-transition: 0.1s ease-in-out;
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
   scroll-behavior: smooth;
-}
-
-::-webkit-scrollbar,
-::-webkit-scrollbar {
-  width: 0 !important;
-}
-
-::-webkit-scrollbar-thumb,
-::-webkit-scrollbar-thumb,
-::-webkit-scrollbar-track,
-::-webkit-scrollbar-track,
-::-webkit-scrollbar-button {
-  background-color: transparent;
-  visibility: hidden;
-  width: 0;
-  display: none;
 }
