@@ -14,9 +14,11 @@ import { CalendarComponent } from './widget/calendar/calendar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule, DateAdapter } from '@angular/material/core';
 import { CustomDateAdapter } from './widget/calendar/custom-date-adapter';
 import { NewLinePipe } from './pipes/new-line.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -38,7 +40,9 @@ import { NewLinePipe } from './pipes/new-line.pipe';
     BrowserAnimationsModule,
     MatDatepickerModule,
     MatCardModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    HttpClientModule,
+    MatFormFieldModule
   ],
   providers: [
     { provide: DateAdapter, useClass: CustomDateAdapter },

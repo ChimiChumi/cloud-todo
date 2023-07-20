@@ -1,4 +1,41 @@
-<!-- weather.component.html -->
 <mat-card class="weather-card">
-    <!-- weather related HTML here -->
-  </mat-card>
+  <div class="search-box">
+    <fa-icon id="pin" [icon]="locIcon"></fa-icon>
+
+    <input
+    [(ngModel)]="city"
+    type="text"
+    placeholder="Search for a city..."
+    (blur)="checkCity()"
+    (click)="city = ''"
+    (keyup.enter)="checkCity()">
+
+    <fa-icon id="search" [icon]="searchIcon"></fa-icon>
+  </div>
+
+  <ng-container *ngIf="weatherData">
+    <div class="weather-box">
+      <img [src]="getWeatherIcon(weatherData.weather[0].main)" [alt]="weatherData.weather[0].description">
+      <div class="temperature">{{ weatherData.main.temp }}°C</div>
+      <div class="description">{{ weatherData.weather[0].description }}</div>
+  </div>
+
+  <div class="weather-details">
+
+    <div class="humidity">
+      <fa-icon id="water" [icon]="waterIcon"></fa-icon>
+      <div class="humidityText">
+        {{ weatherData.main.humidity }} % Humidity
+      </div>
+    </div>
+
+    <div class="wind">
+      <fa-icon id="wind" [icon]="windIcon"></fa-icon>
+      <div class="windText">
+       {{ weatherData.wind.speed }} Km/h Wind Speed
+      </div>
+    </div>
+  </div>
+
+  </ng-container>
+</mat-card>

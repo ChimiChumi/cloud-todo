@@ -94,13 +94,13 @@ export class CalendarComponent implements OnInit, OnDestroy, AfterViewInit {
 
         if (todoExists) {
           cell.style.backgroundColor = 'transparent';
-          cell.style.boxShadow = 'inset 0 0 0 0.2rem #c195cf';
+          cell.style.boxShadow = 'inset 0 0 0 0.2rem rgb(7, 48, 73, 0.7)';
           cell.style.borderRadius = '50%';
         }
 
         if (this.isToday(date)) {
           cell.style.backgroundColor = 'transparent';
-          cell.style.boxShadow = 'inset 0 0 0 0.2rem #e39f9f';
+          cell.style.boxShadow = 'inset 0 0 0 0.2rem rgb(227, 159, 159, 1)';
           cell.style.borderRadius = '50%';
         }
       }
