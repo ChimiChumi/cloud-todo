@@ -7,7 +7,7 @@ import { faMinus } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-list-todo',
   templateUrl: './list-todo.component.html',
-  styleUrls: ['./list-todo.component.css'],
+  styleUrls: ['./list-todo.component.scss'],
   // TODO: have fun with animations
   // animations: [
   //   trigger('removeCloud', [
