@@ -10,6 +10,10 @@ export class TodoWindowService {
   private _showAddTodo = new BehaviorSubject<boolean>(false);
   _todos = new BehaviorSubject<any[]>([]);
 
+  private _showOverlay = new BehaviorSubject<boolean>(false);
+  showOverlay = this._showOverlay.asObservable();
+
+
   showAddTodo = this._showAddTodo.asObservable();
   todos$ = this._todos.asObservable();
 
@@ -37,13 +41,17 @@ export class TodoWindowService {
     }
   }
 
+  toggleOverlayVisibility(show: boolean) {
+    this._showOverlay.next(show);
+  }
+
   addTodo(todo: any): void {
     const todos = this.fetchTodos();
     todo.id = uuidv4(); // using uuid as id
     todos.push(todo);
     localStorage.setItem('todos', JSON.stringify(todos));
     this.updateTodos(todos);
-}
+  }
 
   removeTodo(todo: any): void {
     let todos = this.fetchTodos();

@@ -17,7 +17,7 @@ $btn-transition: 0.1s ease-in-out;
   width: 100%;
   height: $container-height;
   background: {
-    image: url("../../assets/art.jpg");
+    image: url("../../assets/images/art.jpg");
     repeat: no-repeat;
     size: contain;
     position: center;
@@ -36,6 +36,7 @@ $btn-transition: 0.1s ease-in-out;
   overflow: scroll;
   align-items: end;
   left: 10rem;
+  z-index: -1;
 }
 
 .grid-spacing {
@@ -57,7 +58,7 @@ $btn-transition: 0.1s ease-in-out;
   width: $cloud-size;
   height: $cloud-height;
   background: {
-    image: url('../../assets/cloud.png');
+    image: url('../../assets/images/cloud.png');
     repeat: no-repeat;
     size: contain;
   }
@@ -71,9 +72,9 @@ $btn-transition: 0.1s ease-in-out;
     position: relative;
     width: 68%;
     height: 55%;
-    font-size: 0.9rem;
+    font-size: 1rem;
     text-align: center;
-    overflow-wrap: break-word;
+    word-break: break-all;
     overflow-y: scroll;
     padding: 0.1rem 0.5rem;
     margin-bottom: 0.1rem;

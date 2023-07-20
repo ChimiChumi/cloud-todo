@@ -71,7 +71,8 @@ export class AddTodoComponent implements OnInit, OnDestroy {
 
   closeContainer() {
     this.todoWindow.toggleAddTodoVisibility();
+    this.todoWindow.toggleOverlayVisibility(false);
     this.todo = "";
     this.date = "";
-  }
+}
 }
