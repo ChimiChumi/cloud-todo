@@ -62,6 +62,8 @@ export class WeatherComponent {
         return '../../assets/images/rain.png';
       case 'Fog':
         return '../../assets/images/fog.png';
+      case 'Mist':
+        return '../../assets/images/fog.png';
       case 'Snow':
         return '../../assets/images/snow.png';
       default:
