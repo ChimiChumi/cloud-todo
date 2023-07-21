@@ -37,21 +37,20 @@ export class AddTodoComponent implements OnInit, OnDestroy {
     }
   }
 
+  // Add new data in localstorage
   submitForm(todoForm: NgForm): void {
     const todos = this.todoWindow.fetchTodos();
 
     const todoData = {
-      id: todos.length + 1,  // index starting from 1
+      id: todos.length + 1,  // start index from 1 instead of 0
       todo: this.todo,
       date: this.date
     };
 
-
+    // call the service which handles it
     this.todoWindow.addTodo(todoData);
 
     // Reset and close window
-    this.todo = '';
-    this.date = '';
     this.closeContainer();
   }
 
@@ -74,5 +73,5 @@ export class AddTodoComponent implements OnInit, OnDestroy {
     this.todoWindow.toggleOverlayVisibility(false);
     this.todo = "";
     this.date = "";
-}
+  }
 }

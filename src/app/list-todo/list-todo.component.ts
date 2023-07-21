@@ -22,6 +22,7 @@ export class ListTodoComponent implements OnInit {
 
   ngOnInit() {
 
+    // Hard coded dummy data
     // const firstTodo = {
     //   id: 1,
     //   todo:
@@ -44,12 +45,13 @@ export class ListTodoComponent implements OnInit {
 
       // delaying to load only when previous elements are loaded in DOM
       setTimeout(() => {
-        this.scrollToBottom();
+        //this.scrollToBottom();
         this.shiftGridToBottom();
       }, 0);
     });
   }
 
+  // Automatically scroll to the bottom of the scrollable area upon landing on the page.
   scrollToBottom(): void {
     try {
       this.scrollContainer.nativeElement.scrollTop = this.scrollContainer.nativeElement.scrollHeight;
@@ -62,17 +64,17 @@ export class ListTodoComponent implements OnInit {
   }
 
 
-  /**
-   * The function serves as workaround to shift the entire .grid-container
-   * to the bottom of the scrollable area, keeping it centered.
-   */
+  // Workaround to fix bug when page is resized.
   @HostListener('window:resize')
   onWindowResize() {
     this.shiftGridToBottom();
   }
 
+  /**
+   * The function serves as workaround to shift the entire .grid-container
+   * to the bottom of the scrollable area, keeping it centered.
+   */
   shiftGridToBottom() {
-
     const scrollHeight = this.scrollContainer.nativeElement.scrollHeight;
     const gridHeight = this.gridContainer.nativeElement.offsetHeight;
     const offset = Math.max(scrollHeight - gridHeight, 0);

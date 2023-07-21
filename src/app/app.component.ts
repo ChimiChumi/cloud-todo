@@ -33,7 +33,7 @@ export class AppComponent implements OnInit, OnDestroy {
     if (this.overlaySub) {
       this.overlaySub.unsubscribe();
     }
-}
+  }
 
   toggleIcons() {
     this.showIcons = !this.showIcons;

@@ -52,6 +52,7 @@ export class CalendarComponent implements OnInit, OnDestroy, AfterViewInit {
     return this.isSameDate(date, today);
   }
 
+  // format the localized date string to match the ones in localstorage
   getFormattedDate(date: Date): string {
     let year = date.getFullYear();
     let month = ('0' + (date.getMonth() + 1)).slice(-2);
@@ -62,7 +63,7 @@ export class CalendarComponent implements OnInit, OnDestroy, AfterViewInit {
   /**
    * Prints the task of the selected date in the card.
    * @param date selected date
-   * @returns
+   * @returns task on that day
    */
   dailyTasks(date: Date): string {
     const formattedDate = this.getFormattedDate(date);
@@ -73,9 +74,9 @@ export class CalendarComponent implements OnInit, OnDestroy, AfterViewInit {
     return tasks;
   }
 
-  /**
-   * Changes the appearance of the cells where a task is assigned.
-   */
+
+  // Changes the appearance of the calendar cells where a task is assigned.
+
   highlightCalendarCells(): void {
     const calendarCells = this.elementRef.nativeElement.querySelectorAll('.mat-calendar-body-cell');
 

@@ -15,16 +15,16 @@ export class WeatherComponent {
   windIcon = faWind;
   waterIcon = faWater;
 
-  apiKey: string = '0f7ab7afaf3f492b35c995b49ced192d';
+  apiKey: string = '0f7ab7afaf3f492b35c995b49ced192d';  //trial, demo purposes
   weatherData: any;
   city: string = "Szeged";
   isError: boolean = false;
 
+  // set the default city to my town if left empty
   checkCity(): void {
     if (this.city.trim() === '') {
       this.city = 'Szeged';
     }
-
     this.getWeatherData(this.apiKey,this.city);
   }
 
@@ -34,6 +34,12 @@ export class WeatherComponent {
     this.getWeatherData('0f7ab7afaf3f492b35c995b49ced192d', 'szeged');
   }
 
+
+  /**
+   * This function fetches the current weather based on the parameters.
+   * @param apiKey OpenWeatherMap personal API
+   * @param city  entered location
+   */
   getWeatherData(apiKey: string, city: string): void {
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
 
@@ -48,6 +54,7 @@ export class WeatherComponent {
     );
   }
 
+  // loads the icon corresponding with the current weather
   getWeatherIcon(main: string): string {
     switch (main) {
       case 'Clear':

@@ -17,7 +17,7 @@ $form-control-border-color: var(--primary-color, #7749F8);
   font-family: Margarine;
 }
 
-// ----- CONTAINER -----
+// Main container
 .container {
   display: flex;
   justify-content: center;
@@ -52,7 +52,7 @@ fa-icon {
   font-size: 25px;
 }
 
-// ----- FORM FIELDS -----
+// Form fields
 .form-control {
   position: relative;
   display: flex;

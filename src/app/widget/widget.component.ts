@@ -1,4 +1,3 @@
-// widget.component.ts
 import { Component } from '@angular/core';
 
 @Component({

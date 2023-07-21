@@ -13,7 +13,6 @@ export class TodoWindowService {
   private _showOverlay = new BehaviorSubject<boolean>(false);
   showOverlay = this._showOverlay.asObservable();
 
-
   showAddTodo = this._showAddTodo.asObservable();
   todos$ = this._todos.asObservable();
 
@@ -24,7 +23,6 @@ export class TodoWindowService {
    * Other components can access the data with the help of this.
    */
   fetchTodos(): any[] {
-    console.log("FETCHED")
     const todosString = localStorage.getItem('todos');
     return todosString ? JSON.parse(todosString) : [];
   }
@@ -41,10 +39,12 @@ export class TodoWindowService {
     }
   }
 
+  // handles the background blur when adding new todo
   toggleOverlayVisibility(show: boolean) {
     this._showOverlay.next(show);
   }
 
+  // adds todo into localstorage
   addTodo(todo: any): void {
     const todos = this.fetchTodos();
     todo.id = uuidv4(); // using uuid as id
@@ -53,6 +53,7 @@ export class TodoWindowService {
     this.updateTodos(todos);
   }
 
+  // removes todo from localstorage
   removeTodo(todo: any): void {
     let todos = this.fetchTodos();
     todos = todos.filter((t: any) => t.id !== todo.id);
@@ -60,6 +61,7 @@ export class TodoWindowService {
     this.updateTodos(todos);
   }
 
+  // updates the status of all, instead of having to refresh the page
   private updateTodos(todos: any[]): void {
     this._todos.next(todos);
   }
