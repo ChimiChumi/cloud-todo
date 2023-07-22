@@ -1,6 +1,6 @@
 # Cloud Todo App
 
-### Description
+## Description
 This project was developed during an internship program with the goal of creating a unique and easy-to-use TODO website. It's designed to stand out from your usual TODO apps by including creative and unique features.
 
 The site offers a clean, minimalist design that is both attractive and user-friendly. It's designed to engage users and keep them coming back.
