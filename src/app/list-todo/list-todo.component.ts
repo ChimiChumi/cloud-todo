@@ -12,7 +12,7 @@ export class ListTodoComponent implements OnInit {
   minusIcon = faMinus;
   todoArrayLeft: Array<any> = [];
   todoArrayRight: Array<any> = [];
-  // testArray: Array<any> = [];
+  // testArray: Array<any> = []; <-- remove to test with dumy
 
   constructor(private todoWindow: TodoWindowService) { }
 
@@ -22,22 +22,23 @@ export class ListTodoComponent implements OnInit {
 
   ngOnInit() {
 
+    /* REMOVE COMMENTS FOR DUMMY DATA
     // Hard coded dummy data
-    // const firstTodo = {
-    //   id: 1,
-    //   todo:
-    //     `• Lorem ipsum dolor sit amet.\n
-    //      • consectetur adipiscing elit,
-    //        sed do eiusmod tempor incididunt
-    //        ut labore et dolore magna.\n
-    //      • Ut enim ad minim veniam, quis nostrud
-    //        exercitation ullamco laboris nisi\n
-    //      • aliquip ex ea commodo consequat.`,
-
-    //   date: '2023-07-18'
-    // };
-
-    // this.testArray = Array(21).fill(firstTodo);
+     const firstTodo = {
+       id: '',
+       todo:
+         `"Lorem ipsum dolor sit amet, consectetur
+           adipiscing elit, sed do eiusmod tempor
+           incididunt ut labore et dolore magna aliqua.
+           Ut enim ad minim veniam, quis nostrud exercitation
+           ullamco laboris nisi ut aliquip ex ea commodo consequat.
+           Duis aute irure dolor in reprehenderit in voluptate velit
+           esse cillum dolore eu fugiat nulla pariatur. Excepteur
+           sint occaecat cupidatat non proident, sunt in culpa
+           qui officia deserunt mollit anim id est laborum."`,
+       date: ''
+     }
+     this.testArray = Array(20).fill(firstTodo); */
 
     this.todoWindow.todos$.subscribe(todos => {
       this.todoArrayLeft = todos.filter((todo: any, index: number) => index % 2 === 0);

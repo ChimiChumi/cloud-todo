@@ -8,10 +8,9 @@ $button-shadow-color: rgba(0, 0, 0, 0.3);
 $button-bg-color: #198754;
 $button-border-color: black;
 $container-width: 30rem;
-$container-height: 32rem;
+$container-height: 30rem;
 $form-control-width: 20rem;
 $form-control-height: 14rem;
-$form-control-border-color: var(--primary-color, #7749F8);
 
 * {
   font-family: Margarine;
@@ -28,7 +27,7 @@ $form-control-border-color: var(--primary-color, #7749F8);
   transform: translate(-50%, -50%);
   width: $container-width;
   height: $container-height;
-  background-color: #f2f2f2;
+  border: 2px solid black;
   border-radius: 1.5rem;
   background: #FFDFD8;
   box-shadow: 0px 14px 8px 4px $box-shadow-color;
@@ -56,13 +55,12 @@ fa-icon {
 .form-control {
   position: relative;
   display: flex;
-  top: 2rem;
+  top: 3rem;
   width: $form-control-width;
   height: $form-control-height;
-  padding: 1rem;
   border-radius: 1.25rem;
-  border: 1px solid $form-control-border-color;
-  background: var(--default-white, #FFF);
+  border-color: black;
+  padding: 1.5rem;
   box-shadow: 0px 4px 4px 3px $box-shadow-color inset;
   resize: none;
 }
@@ -72,7 +70,7 @@ textarea {
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;
-  word-break: break-all;
+  word-wrap: break;
 
   &::placeholder{
     font-size: 0.9rem;
@@ -83,7 +81,7 @@ textarea {
   position: absolute;
   display: flex;
   left: 50%;
-  margin-top: 1rem;
+  margin-top: 2rem;
   transform: translate(-50%);
 }
 
@@ -93,7 +91,7 @@ input[type="date"] {
   margin: 1rem auto;
   padding: 0.5rem;
   background-color: white;
-  top: 3rem;
+  top: 4rem;
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;
@@ -106,7 +104,7 @@ input[type="date"] {
   position: relative;
   display: flex;
   margin: 0 auto;
-  top: 4.5rem;
+  top: 4rem;
   background-color: $button-bg-color;
   border-color: $button-border-color;
   box-shadow: 0px 4px 0px 0px black;

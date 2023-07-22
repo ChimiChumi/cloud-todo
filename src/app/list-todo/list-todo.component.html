@@ -2,6 +2,7 @@
     <img class="background-image" src="../../assets/images/art.png" alt="Background Image">
   <div class="grid-container" #gridContainer>
     <div class="grid-column" #gridColumn>
+      <!-- REPLACE todoArrayLeft WITH testArray FOR DUMMY DATA -->
       <div *ngFor="let todo of todoArrayLeft" class="cloud">
         <div class="cloud-task">
           <div [innerHTML]="todo.todo | newLine"></div>
@@ -14,6 +15,7 @@
     </div>
     <div class="grid-column" #gridColumn>
       <div class="grid-spacing"></div>
+      <!-- REPLACE todoArrayRight WITH testArray FOR DUMMY DATA -->
       <div *ngFor="let todo of todoArrayRight" class="cloud">
         <div class="cloud-task">
           <div [innerHTML]="todo.todo | newLine"></div>
